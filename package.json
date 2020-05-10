@@ -1,11 +1,14 @@
 {
-  "name": "gatsby-starter-typescript-plus",
-  "description": "A starter kit for TypeScript-based Gatsby projects with sensible defaults.",
-  "version": "1.0.0",
+  "name": "mar-bi-page",
+  "description": "A personal webpage build with Typescript & Gatsby",
+  "version": "0.0.1",
   "private": true,
-  "author": "Resi Respati <resir014@gmail.com>",
+  "author": "mar-bi",
   "keywords": [
-    "gatsby"
+    "mar-bi",
+    "webpage",
+    "gatsby",
+    "typescript"
   ],
   "license": "MIT",
   "main": "n/a",
