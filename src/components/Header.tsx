@@ -5,6 +5,8 @@ import { Link } from 'gatsby'
 
 import { heights, dimensions, colors } from '../styles/variables'
 import Container from './Container'
+import { NavItem } from '../layouts'
+import NavMenu from './NavMenu'
 
 const StyledHeader = styled.header`
   height: ${heights.header}px;
@@ -16,8 +18,14 @@ const StyledHeader = styled.header`
 const HeaderInner = styled(Container)`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
+`
+
+const HeaderLeft = styled.div`
+  display: flex;
+  align-items: baseline;
 `
 
 const HomepageLink = styled(Link)`
@@ -30,15 +38,27 @@ const HomepageLink = styled(Link)`
     text-decoration: none;
   }
 `
+const HeaderSubtitle = styled.h5`
+  color: ${colors.white};
+  font-size: 0.875em;
+  font-weight: 400;
+  margin: 0 1em;
+`
 
 interface HeaderProps {
   title: string
+  subtitle: string
+  nav: NavItem[]
 }
 
-const Header: React.FC<HeaderProps> = ({ title }) => (
+const Header: React.FC<HeaderProps> = ({ title, subtitle, nav }) => (
   <StyledHeader>
     <HeaderInner>
-      <HomepageLink to="/">{title}</HomepageLink>
+      <HeaderLeft>
+        <HomepageLink to="/">{title}</HomepageLink>
+        <HeaderSubtitle>{subtitle}</HeaderSubtitle>
+      </HeaderLeft>
+      <NavMenu items={nav} />
     </HeaderInner>
   </StyledHeader>
 )

@@ -9,12 +9,19 @@ import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
 
+export interface NavItem {
+  id: string
+  to: string
+  name: string
+}
 interface StaticQueryProps {
   site: {
     siteMetadata: {
       title: string
+      subtitle: string
       description: string
       keywords: string
+      navItems: NavItem[]
     }
   }
 }
@@ -26,7 +33,14 @@ const IndexLayout: React.FC = ({ children }) => (
         site {
           siteMetadata {
             title
+            subtitle
             description
+            keywords
+            navItems {
+              id
+              to
+              name
+            }
           }
         }
       }
@@ -40,7 +54,7 @@ const IndexLayout: React.FC = ({ children }) => (
             { name: 'keywords', content: data.site.siteMetadata.keywords }
           ]}
         />
-        <Header title={data.site.siteMetadata.title} />
+        <Header title={data.site.siteMetadata.title} subtitle={data.site.siteMetadata.subtitle} nav={data.site.siteMetadata.navItems} />
         <LayoutMain>{children}</LayoutMain>
       </LayoutRoot>
     )}
